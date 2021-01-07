@@ -58,7 +58,11 @@ class App extends Component {
           />
 
           {/* New */}
-          <Route path="/catnew" component={ CatNew } />
+          {/* <Route path="/catnew" component={ CatNew } /> */}
+          <Route
+            path="/catnew"
+            render={ (props) => <CatNew createCat={ this.createCat } /> }
+          />
 
           <Route path="/catedit" component={ CatEdit } />
           <Route component={ NotFound } />
