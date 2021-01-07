@@ -15,7 +15,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route
-} from "react-router-dom"
+} from 'react-router-dom'
 
 import cats from './mockCats.js'
 
@@ -26,43 +26,43 @@ class App extends Component {
       cats: cats
     }
   }
+
+  createCat = (newcat) => {
+    console.log(newcat)
+  }
+
   render() {
     return (
       <Router>
         <Header />
-
         <Switch>
-          <Route exact path='/' component={ Home } />
-        {/* Static route - <Route path='/catindex' component={ CatIndex } /> */}
+          {/* Home */}
+          <Route exact path="/" component={ Home } />
+
+          {/* Index */}
+          {/* Static route - <Route path="/catindex" component={ CatIndex } /> */}
           <Route
-            path='/catindex'
+            path="/catindex"
             render={ (props) => <CatIndex cats={ this.state.cats } /> }
           />
 
-
-          {/* Static route - <Route path='/catshow/:id' component={ CatShow } /> */}
-
+          {/* Show */}
+          {/* Static route - <Route path="/catshow/:id" component={ CatShow } /> */}
           <Route
-            path='/catshow/:id'
+            path="/catshow/:id"
             render={ (props) => {
-
-              const id = props.match.params.id
-
+              let id = props.match.params.id
               let cat = this.state.cats.find(cat => cat.id === parseInt(id))
-
               return <CatShow cat={ cat } />
-
             }}
           />
 
+          {/* New */}
+          <Route path="/catnew" component={ CatNew } />
 
-
-
-          <Route path='/catnew' component={ CatNew } />
-          <Route path='/catedit' component={ CatEdit } />
+          <Route path="/catedit" component={ CatEdit } />
           <Route component={ NotFound } />
         </Switch>
-
         <Footer />
       </Router>
     )

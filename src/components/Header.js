@@ -8,10 +8,10 @@ class Header extends Component {
       <>
         <Jumbotron fluid>
           <Container fluid>
-            <a href="/"><img src={ catlogo } id="cat-logo"/></a>
+            <a href="/"><img src={ catlogo } alt="cat tinder logo" id="cat-logo" /></a>
             <span id="top-nav">
-              <a>Meet the Cats</a> |
-              <a> Add a Cat</a>
+              <a href="/catindex">Meet the Cats</a> |
+              <a href="/catnew"> Add a Cat</a>
             </span>
           </Container>
         </Jumbotron>

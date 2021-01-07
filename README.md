@@ -14,16 +14,13 @@
 - Added bootstrap: $ yarn add bootstrap, $ yarn add reactstrap
 - Added mock cats file, set to state
 - Added UI to header and footer
+- Added color scheme: Pink #A91B60 Fuchsia #FF0080 Hot Pink #EC9EC0 Champagne #EBE0D0
 
 
-  Pink
-  #A91B60
-
-  Fuchsia
-  #FF0080
-
-  Hot Pink
-  #EC9EC0
-
-  Champagne
-  #EBE0D0
+### Card: Read Functionality
+- Added active links to Header, Footer, Home
+- Refactored static index route to be a dynamic route
+- Passed cat object to index, mapped over array
+- Refactored static show route to be a dynamic route
+- Pulled id from params to find one cat
+- Passed cat to show page
