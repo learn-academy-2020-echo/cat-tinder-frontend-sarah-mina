@@ -1,15 +1,18 @@
 import React, { Component } from 'react'
 import { Jumbotron, Container } from 'reactstrap'
+import catlogo from '../assets/cat-tinder.png'
 
 class Header extends Component {
   render() {
     return (
       <>
-        <h1>Header</h1>
         <Jumbotron fluid>
           <Container fluid>
-            <h1 className="display-3">Fluid jumbotron</h1>
-            <p className="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+            <a href="/"><img src={ catlogo } id="cat-logo"/></a>
+            <span id="top-nav">
+              <a>Meet the Cats</a> |
+              <a> Add a Cat</a>
+            </span>
           </Container>
         </Jumbotron>
       </>
