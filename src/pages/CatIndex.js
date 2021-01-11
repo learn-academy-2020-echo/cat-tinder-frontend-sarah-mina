@@ -4,8 +4,8 @@ class CatIndex extends Component {
   render() {
     return (
       <>
-        <h3>This is the index page</h3>
-        { this.props.cats.map((cat, index) => {
+        <h3>Meet the Cats</h3>
+        { this.props.cats && this.props.cats.map((cat, index) => {
           return (
             <a href={`/catshow/${cat.id}`}><p key={ index }>{ cat.name }</p></a>
           )

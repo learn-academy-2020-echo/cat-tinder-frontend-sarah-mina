@@ -6,12 +6,16 @@
 /* Header */
 a{
   color: #FF0080 !important;
+  text-decoration: none !important;
+}
+a:hover{
+  color: #EC9EC0;
 }
 .jumbotron.jumbotron-fluid{
   background-color: #EBE0D0 !important;
   color: #FF0080 !important;
   padding: 0px;
-  text-decoration: none !important;
+  /* text-decoration: none !important; */
 }
 .container-fluid{
   display: flex;

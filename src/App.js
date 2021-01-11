@@ -35,6 +35,7 @@ class App extends Component {
     return (
       <Router>
         <Header />
+
         <Switch>
           {/* Home */}
           <Route exact path="/" component={ Home } />
@@ -67,6 +68,7 @@ class App extends Component {
           <Route path="/catedit" component={ CatEdit } />
           <Route component={ NotFound } />
         </Switch>
+
         <Footer />
       </Router>
     )
