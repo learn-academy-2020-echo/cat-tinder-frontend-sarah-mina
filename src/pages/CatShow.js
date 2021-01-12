@@ -16,7 +16,7 @@ class CatShow extends Component {
         <br />
         <br />
         <Button>
-        Delete Cat Profile
+          Delete Cat Profile
         </Button>
       </div>
     )

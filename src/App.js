@@ -17,19 +17,58 @@ import {
   Route
 } from 'react-router-dom'
 
-import cats from './mockCats.js'
+// import cats from './mockCats.js'
 
 class App extends Component {
   constructor(props){
     super(props)
     this.state = {
-      cats: cats
+      cats: []
     }
   }
 
-  createCat = (newcat) => {
+  componentDidMount(){
+    this.catIndex()
   }
-  updateCat = (editcat) => {
+
+  catIndex = () => {
+    fetch("http://localhost:3000/cats")
+    .then(response => {
+      return response.json()
+    })
+    .then(catsArray => {
+      this.setState({ cats: catsArray })
+    })
+    .catch(errors => {
+      console.log("index errors:", errors)
+    })
+  }
+
+  createCat = (newcat) => {
+    fetch("http://localhost:3000/cats", {
+      body: JSON.stringify(newcat),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "POST"
+    })
+    .then(response => {
+      if(response.status === 422){
+        alert("There is something wrong with your submission.")
+      }
+      console.log(response)
+      return response.json()
+    })
+    .then(payload => {
+      console.log(payload)
+      this.catIndex()
+    })
+    .catch(errors => {
+      console.log("create errors", errors)
+    })
+  }
+
+  updateCat = (editcat, id) => {
     console.log(editcat)
   }
 
