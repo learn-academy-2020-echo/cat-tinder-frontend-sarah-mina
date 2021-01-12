@@ -28,10 +28,13 @@ class App extends Component {
   }
 
   createCat = (newcat) => {
-    console.log(newcat)
+  }
+  updateCat = (editcat) => {
+    console.log(editcat)
   }
 
   render() {
+    console.log(this.state.cats)
     return (
       <Router>
         <Header />
@@ -41,31 +44,37 @@ class App extends Component {
           <Route exact path="/" component={ Home } />
 
           {/* Index */}
-          {/* Static route - <Route path="/catindex" component={ CatIndex } /> */}
           <Route
             path="/catindex"
             render={ (props) => <CatIndex cats={ this.state.cats } /> }
           />
 
           {/* Show */}
-          {/* Static route - <Route path="/catshow/:id" component={ CatShow } /> */}
-          <Route
-            path="/catshow/:id"
-            render={ (props) => {
-              let id = props.match.params.id
-              let cat = this.state.cats.find(cat => cat.id === parseInt(id))
-              return <CatShow cat={ cat } />
-            }}
-          />
+            <Route
+              path="/catshow/:id"
+              render={ (props) => {
+                let id = props.match.params.id
+                let cat = this.state.cats.find(cat => cat.id === parseInt(id))
+                return <CatShow cat={ cat } />
+              }}
+            />
 
           {/* New */}
-          {/* <Route path="/catnew" component={ CatNew } /> */}
           <Route
             path="/catnew"
             render={ (props) => <CatNew createCat={ this.createCat } /> }
           />
 
-          <Route path="/catedit" component={ CatEdit } />
+          {/* Edit */}
+          <Route
+            exact path={"/catedit/:id"}
+            render={ (props) => {
+              let id = props.match.params.id
+              let cat = this.state.cats.find(cat => cat.id === parseInt(id))
+              return <CatEdit updateCat={ this.updateCat } cat={ cat } />
+            }}
+          />
+
           <Route component={ NotFound } />
         </Switch>
 
