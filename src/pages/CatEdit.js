@@ -37,7 +37,7 @@ class CatEdit extends Component{
   render(){
     return(
       <div className="main-body">
-        <h2>Update Cat Profile</h2>
+        <h3>Update Cat Profile</h3>
         <Form>
           <FormGroup>
             <Label>Name</Label>
