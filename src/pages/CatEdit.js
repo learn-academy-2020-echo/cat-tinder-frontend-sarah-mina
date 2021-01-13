@@ -13,9 +13,9 @@ class CatEdit extends Component{
     super(props)
     this.state = {
       form:{
-        name: "",
-        age: "",
-        enjoys: ""
+        name: this.props.cat.name,
+        age: this.props.cat.age,
+        enjoys: this.props.cat.enjoys
       },
       submitted: false
     }
@@ -40,7 +40,7 @@ class CatEdit extends Component{
         <h3>Update Cat Profile</h3>
         <Form>
           <FormGroup>
-            <Label>Name</Label>
+            <Label>Cat's Name</Label>
             <Input
               type="text"
               name="name"
@@ -49,7 +49,7 @@ class CatEdit extends Component{
             />
           </FormGroup>
           <FormGroup>
-            <Label>Age</Label>
+            <Label>Cat's Age</Label>
             <Input
               type="number"
               name="age"
@@ -58,7 +58,7 @@ class CatEdit extends Component{
             />
           </FormGroup>
           <FormGroup>
-            <Label>Enjoys</Label>
+            <Label>I enjoy...</Label>
             <Input
               type="text"
               name="enjoys"

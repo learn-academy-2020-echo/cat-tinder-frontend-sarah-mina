@@ -59,8 +59,7 @@ class App extends Component {
       console.log(response)
       return response.json()
     })
-    .then(payload => {
-      console.log(payload)
+    .then(() => {
       this.catIndex()
     })
     .catch(errors => {
@@ -69,7 +68,43 @@ class App extends Component {
   }
 
   updateCat = (editcat, id) => {
-    console.log(editcat)
+    return fetch(`http://localhost:3000/cats/${id}`, {
+      body: JSON.stringify(editcat),
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "PATCH"
+    })
+    .then(response => {
+      if(response.status === 422){
+        alert("Please check your submission.")
+      }
+      return response.json()
+    })
+    .then(() => {
+      this.catIndex()
+    })
+    .catch(errors => {
+      console.log("update errors:", errors)
+    })
+  }
+
+  deleteCat = (id) => {
+    return fetch(`http://localhost:3000/cats/${id}`, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method: "DELETE"
+    })
+    .then(response => {
+      return response.json()
+    })
+    .then(() => {
+      this.catIndex()
+    })
+    .catch(errors => {
+      console.log("delete errors:", errors)
+    })
   }
 
   render() {
@@ -94,7 +129,7 @@ class App extends Component {
               render={ (props) => {
                 let id = props.match.params.id
                 let cat = this.state.cats.find(cat => cat.id === parseInt(id))
-                return <CatShow cat={ cat } />
+                return <CatShow cat={ cat } deleteCat={ this.deleteCat } />
               }}
             />
 
@@ -106,7 +141,7 @@ class App extends Component {
 
           {/* Edit */}
           <Route
-            exact path={"/catedit/:id"}
+            exact path="/catedit/:id"
             render={ (props) => {
               let id = props.match.params.id
               let cat = this.state.cats.find(cat => cat.id === parseInt(id))

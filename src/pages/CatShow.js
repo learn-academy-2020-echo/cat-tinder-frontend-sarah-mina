@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Button } from 'reactstrap'
+import { NavLink } from 'react-router-dom'
 
 class CatShow extends Component {
   render() {
@@ -10,14 +11,18 @@ class CatShow extends Component {
         <h3>Hi there, I'm { cat.name }</h3>
         <p>I am { cat.age } years old</p>
         <p>I enjoy { cat.enjoys }</p>
-        <Button href={`/catedit/${this.props.cat.id}`}>
-          Edit Cat Profile
-        </Button>
+        <NavLink to={`/catedit/${this.props.cat.id}`}>
+          <Button>
+            Edit Cat Profile
+          </Button>
+        </NavLink>
         <br />
         <br />
-        <Button>
-          Delete Cat Profile
-        </Button>
+        <NavLink to="/catindex">
+          <Button onClick={ () => this.props.deleteCat(this.props.cat.id)}>
+            Delete Cat Profile
+          </Button>
+        </NavLink>
       </div>
     )
   }

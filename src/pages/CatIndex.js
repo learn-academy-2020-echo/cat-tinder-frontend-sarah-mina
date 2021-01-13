@@ -9,9 +9,11 @@ class CatIndex extends Component {
         <h3>Meet the Cats</h3>
         { this.props.cats && this.props.cats.map((cat, index) => {
           return (
-            <NavLink to={`/catshow/${cat.id}`} key={ index }>
-             { cat.name } 🐾
-            </NavLink>
+            <ul>
+              <NavLink to={`/catshow/${cat.id}`} key={ index }>
+               { cat.name } 🐾
+              </NavLink>
+            </ul>
           )
         })}
       </div>
@@ -19,3 +21,5 @@ class CatIndex extends Component {
   }
 }
 export default CatIndex
+
+// NavLink vs Link - Alicia
